@@ -1,9 +1,11 @@
 'use strict';
 
+require("dotenv").config();
 const express = require('express');
 const superagent = require('superagent');
+const pg = require('pg');
 // const cors = require('cors');
-
+const DATABASE_URL=process.env.DATABASE_URL;
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,21 +13,30 @@ const PORT = process.env.PORT || 3000;
 // app.use(express.urlencoded());
 app.set('view engine', 'ejs');
 
-app.get('/', renderHomePage);
-app.get('/hello', renderHomePage);
+const client = new pg.Client(DATABASE_URL);
+client.on('error', err => console.error(err));
 
-app.get('/searches/new', showForm);
+
 
 // app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static( "./puplic"));
 
 app.post('/searches', createSearch);
-
+app.get('/', renderHomePage);
+app.get('/hello', renderHomePage);
+app.get('/searches/new', showForm);
 app.get('*', (request, response) => response.status(404).send('This route does not exist'));
 
-app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+// app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+client.connect().then(() => {
+  app.listen(PORT, () => {
+      console.log(`The PORT is : ${PORT}`);
+  })
+})
+
+
 
 function Book(info) {
 
@@ -37,7 +48,15 @@ function Book(info) {
 }
 
 function renderHomePage(request, response) {
-  response.render('pages/index');
+
+  const selectBookQuery = 'SELECT * FROM books;';
+  client.query(selectBookQuery).then((results => {
+    response.render('pages/index.ejs', { results: results.rows });
+  })).catch(error => {
+    console.log('Error',error)
+  });
+ 
+  // response.render('pages/index');
 }
 
 function showForm(request, response) {
@@ -69,3 +88,4 @@ function createSearch(request, response) {
     return res.render('pages/error', { error: error });
   });
 }
+

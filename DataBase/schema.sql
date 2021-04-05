@@ -5,5 +5,5 @@ CREATE TABLE books (
   ISPN VARCHAR(255),
   authors VARCHAR(255),
   description TEXT,
-  image_url VARCHAR,
+  image_url VARCHAR
 );
