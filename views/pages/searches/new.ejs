@@ -4,16 +4,18 @@
     <html lang="en">
     
     <head>
-      <title>Book Collection</title>
       
-      <link rel="stylesheet" href="/styles/reset.css">
-      <link rel="stylesheet" href="/styles/layout.css">
-      <link rel="stylesheet" href="/styles/base.css">
-      <link rel="stylesheet" href="/styles/modules.css">
+      <%- include('../../layout/head.ejs') %>
+
 
     </head>
     
     <body>
+
+<header>
+  <%- include('../../layout/header.ejs') %>
+</header>
+
       <main>
         <h4 class="headerOFSearchpage">Search by Title or Author</h4>
         <form action="/searches" method="post">
