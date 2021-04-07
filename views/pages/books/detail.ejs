@@ -36,13 +36,43 @@
     <p> description:  <%= results.description%></p>
 
 
- 
-    
-  
 
   </section>
 
-      
+  <form class="formwithdel" action="/del/<%=results.id%>?_method=delete"  method="post">
+    <button id="deletDetails">Delete</button>
+
+</form>
+
+<button id="updateDetails">Update</button>
+
+<form class="updatefrom"action="/update/<%=results.id%>?_method=put" method="post">
+    <label for="">
+        <span>Image</span><input type="text" name="image_url" value="<%=results.image_url %>"></label>
+        <label for="">
+            <span>
+                Title
+            </span><input type="text" name="title" value="<%=results.title %>"></label>
+            <label for=""><span>
+                Auther
+            </span><input type="text" name="authors" value="<%=results.authors %>"></label>
+            <label for="">
+                <span>
+                    Text Description
+                </span>
+               <textarea name="description" id="" cols="30" rows="10">
+                <%=results.description %>
+            </textarea> 
+            </label>
+            
+            <label for=""><span>
+                ISBN
+            </span><input type="text" name="isbn" value="<%=results.isbn %>"></label>
+            <label for=""><span>
+
+            <button>Update</button>
+            
+        </form>
 
 </main>
 </body>
