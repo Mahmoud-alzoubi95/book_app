@@ -81,9 +81,9 @@ function deletFun(req,res){
 
 function updateFun(req,res){
   const id = req.params.id;
-  const SQL=`UPDATE books SET title=$1,ISPN=$2,authors=$3,description=$4,image_url=$5 WHERE id=$6;`
-  const { title , ISPN, authors, description, image_url }=req.body;
-  const safeValues = [title,ISPN,authors,description,image_url,id];
+  const SQL=`UPDATE books SET title=$1,isbn=$2,authors=$3,description=$4,image_url=$5 WHERE id=$6;`
+  const { title , isbn, authors, description, image_url }=req.body;
+  const safeValues = [title,isbn,authors,description,image_url,id];
   
   
   client.query(SQL,safeValues).then(data=>{
@@ -117,10 +117,10 @@ response.render('pages/books/detail', {results:results.rows[0]})
 
 function saveData(request, response) {
 
-  const { title,ISPN, authors, description , image_url } = request.body;
-
-  const sqlQuery = 'INSERT INTO books (title,ISPN, authors, description , image_url ) VALUES($1,$2,$3,$4,$5) RETURNING id;';
-  const safeValues = [title,ISPN, authors, description , image_url ];
+  const { title,isbn, authors, description , image_url } = request.body;
+  console.log(request.body,'inside save data');
+  const sqlQuery = 'INSERT INTO books (title,isbn, authors, description , image_url ) VALUES($1,$2,$3,$4,$5) RETURNING id;';
+  const safeValues = [title,isbn, authors, description , image_url ];
 
   client.query(sqlQuery, safeValues).then(results => {
     // console.log(results.rows[0]);
