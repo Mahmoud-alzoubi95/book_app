@@ -5,7 +5,7 @@
     
     <head>
       <title>Book Collection</title>
-      
+
       <link rel="stylesheet" href="../../styles/reset.css">
       <link rel="stylesheet" href="../../styles/layout.css">
       <link rel="stylesheet" href="../../styles/base.css">
@@ -13,26 +13,44 @@
 
     </head>
     
+    <header id="headofsearchepage">
+
+     <h4 class="headerOFSearchpage">Search by Title or Author</h4>
+
+   </header>
     <body>
       <main>
-        <h4 class="headerOFSearchpage">Search by Title or Author</h4>
-        <form action="/searches" method="post">
-          <input type="text" name="search" placeholder="Enter a title or author" required>
-          <fieldset>
+
+
+
+      <section id="formcontainer">
+                  
+        <form action="/searches" method="post" id="form-body">
+          <input type="text" name="search" placeholder="Enter a title or author" required  class="inputfield"><br>
+         
             <label for="title">
-              <span>Title</span>
-              <input type="radio" name="searchBy" value="title" required>
+              <span class="titlespan">Title</span>
+              <input type="radio" name="searchBy" value="title" required >
             </label>
-          </fieldset>
-          <fieldset>
+          
+          
             <label for="author">
-              <span>Author</span>
+              <span class="autherspan">Author</span>
               <input type="radio" name="searchBy" value="author" required>
-            </label>
-          </fieldset>
-          <button type="submit">Search the Google Books API</button>
+            </label><br>
+         
+          <button type="submit" id="button">Search the Google Books API</button>
         </form>
+
+      </section>
+
+
+
+
       </main>
+
+
+
     </body>
     
     </html>
