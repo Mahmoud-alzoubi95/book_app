@@ -1,0 +1,42 @@
+#headofsearchepage{
+    height: 70px;
+    background-color: rgb(3, 107, 192);
+    box-shadow: 2px 2px 2px black;
+    color: cornsilk;
+    text-align: center;
+}
+
+    h4{
+    padding: 2%;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    }
+
+
+#formcontainer{
+
+    width: 50%;
+    /* height: 50%; */
+    
+    text-align: center;
+    margin-left: 25%;
+    margin-top: 10%;
+    background-color: rgb(3, 107, 192 , 0.25);
+
+}      
+    #form-body{
+        /* width: 75%; */
+        /* height: 75%; */
+        grid-template: 4 / 1;
+
+
+    }
+
+    
+
+
+
+
+    
+
