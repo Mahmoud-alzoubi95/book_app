@@ -118,7 +118,9 @@ response.render('pages/books/detail', {results:results.rows[0]})
 function saveData(request, response) {
 
   const { title,isbn, authors, description , image_url } = request.body;
+
   console.log(request.body,'inside save data');
+
   const sqlQuery = 'INSERT INTO books (title,isbn, authors, description , image_url ) VALUES($1,$2,$3,$4,$5) RETURNING id;';
   const safeValues = [title,isbn, authors, description , image_url ];
 
