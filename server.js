@@ -83,10 +83,10 @@ response.render('pages/books/detail', {results:results.rows[0]})
 
 function saveData(request, response) {
 
-  const { title,ISPN, authors, description , image_url } = request.body;
+  const { title,isbn, authors, description , image_url } = request.body;
 
-  const sqlQuery = 'INSERT INTO books (title,ISPN, authors, description , image_url ) VALUES($1,$2,$3,$4,$5) RETURNING id;';
-  const safeValues = [title,ISPN, authors, description , image_url ];
+  const sqlQuery = 'INSERT INTO books (title,isbn, authors, description , image_url ) VALUES($1,$2,$3,$4,$5) RETURNING id;';
+  const safeValues = [title,isbn, authors, description , image_url ];
 
   client.query(sqlQuery, safeValues).then(results => {
     response.redirect(`/book/${results.rows[0].id}`);
