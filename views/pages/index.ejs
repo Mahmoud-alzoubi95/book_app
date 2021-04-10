@@ -2,18 +2,57 @@
 <html lang="en">
 
 <head>
-  <title>Book Collection</title>
-  <link rel="stylesheet" href="../../../public/styles/reset.css">
-  <link rel="stylesheet" href="../../../public/styles/base.css">
-  <link rel="stylesheet" href="../../../public/styles/layout.css">
-  <link rel="stylesheet" href="../../../public/styles/module.css">
- 
+
+  <%- include('../layout/head.ejs') %>
+
 </head>
 
 <body>
-  <main>
-    <h4>My Book Collection</h4>
 
+  <header>
+
+    <%- include('../layout/header.ejs') %>
+
+
+  </header>
+
+  <main>
+
+
+
+
+    
+    <section class="task-view container">
+      <!-- Display tasks here -->
+      <ul>
+        <% if (results.length) { %>
+          <% results.forEach(data=> { %>
+            <li>
+              <h4>
+                <%= data.title %>
+              </h4>
+              <p>
+                <%= data.ISPN %>
+              </p>
+              <!-- <p>
+                <%= data.authors %>
+              </p> -->
+              <a href="/book/<%= data.id %>">more details</a>
+              <!-- <p>
+                <%= data.description %>
+              </p> -->
+      
+              <img src=<%= data.image_url %> alt="">
+              <!-- <a href='/tasks/<%= data.id %>' target="_blank" rel="noopener noreferrer">View task details</a> -->
+            </li>
+           
+            <% }); %>
+              <% } else { %>
+                <p>No data was found</p>
+                <% } %>
+      </ul>
+    </section>
+    <h6>   my books <%= results.length %></h6>
   </main>
 </body>
 

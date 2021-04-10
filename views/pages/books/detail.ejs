@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('../../layout/head.ejs') %> 
+
+</head>
+
+<body>
+
+<header>
+    <%- include('../../layout/header.ejs') %> 
+</header>
+
+  <main>
+<section>
+   
+
+<div>
+    <img src=<%= results.image_url %> >
+</div>
+
+        <ul>
+        <li> Title:
+        <%= results.title %>
+        </li>
+    </ul>
+
+<h3>ISPN:
+  <%= results.ispn %>
+</h3>
+
+    <h2>AUTHOR: <%= results.authors %></h2>
+
+    <p> description:  <%= results.description%></p>
+
+
+ 
+    
+  
+
+  </section>
+
+      
+
+</main>
+</body>
+
+</html>

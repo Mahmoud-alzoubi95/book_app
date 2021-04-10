@@ -3,33 +3,62 @@
 
 <head>
 
-  <title>Book Collection</title>
-  <link rel="stylesheet" href="../../styles/reset.css">
-  <link rel="stylesheet" href="../../styles/layout.css">
-  <link rel="stylesheet" href="../../styles/base.css">
-  <link rel="stylesheet" href="../../styles/modules.css">
+
+  <%- include('../../layout/head.ejs') %>
+
 
 </head>
 
 <body>
-  <main>
+<header>
 
+  <%- include('../../layout/header.ejs') %>
+
+</header>
+
+
+  <main>
+<section>
     <% searchResults.forEach(book=> {%>
 
 <div>
+
      <img src=<%=book.thumbnail%>/>
+
+
 </div>
 
         <ul>
-        <li>
+        <li> Title:
         <%= book.title %>
         </li>
     </ul>
-    <h2><%= book.authors %></h2>
 
-    <p><%= book.description%></p>
+<h3>ISPN:
+  <%= book.ispn %>
+</h3>
 
+    <h2>AUTHOR: <%= book.authors %></h2>
+
+    <p> description:  <%= book.description%></p>
+
+
+    <form action="/books" method="post">
+
+      <input type="text" name="isbn"  value = "<%= book.isbn %>" >
+      <input type="hidden" name="image_url"  value = "<%= book.thumbnail %>">
+      <input type="hidden" name="title"  value = "<%= book.title %>">
+      <input type="hidden" name="author"  value = "<%= book.authors %>">
+      <input type="hidden" name="description"  value = "<%= book.description %>">
+      <input type="submit" value = "select this book">
+
+    <!-- <button class="button_link">select book</button> -->
+
+    </form>
+    
     <% }) %>
+
+  </section>
 
       
 
